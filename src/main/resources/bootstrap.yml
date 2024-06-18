@@ -1,0 +1,5 @@
+aws:
+  paramstore:
+    enabled: true
+    name: booking
+    prefix: /mvp

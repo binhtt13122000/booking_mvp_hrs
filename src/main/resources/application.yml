@@ -1,0 +1,38 @@
+spring:
+  application:
+    name:
+  datasource:
+    url:
+    username:
+    password:
+    driverClassName: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        jdbc:
+          batch_size: 10
+        order_inserts: true
+
+jwt:
+  secret:
+  issuer:
+  audience:
+  expired:
+
+management:
+  endpoint:
+    health:
+      show-details: ALWAYS
+
+swagger:
+  contact-name: Binh Truong
+  contact-mail: binhtt.work@gmail.com
+  contact-url: https://github.com/binhtt13122000
+  app-name: MVP Hotel Booking API
+  app-description: ""
+  app-version: 1.0.0

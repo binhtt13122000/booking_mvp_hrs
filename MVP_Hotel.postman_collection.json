@@ -1,0 +1,529 @@
+{
+	"info": {
+		"_postman_id": "67bce6ba-fac4-401b-b874-60b1f99ac669",
+		"name": "MVP Hotel Copy 2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25749285"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "1. REGISTER",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"admin@gmail.com\",\r\n    \"password\": \"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/auth/register",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2. LOGIN",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"admin@gmail.com\",\r\n    \"password\": \"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/auth/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Booking",
+			"item": [
+				{
+					"name": "3. Create Booking",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXBlIjoiand0IiwiYWxnIjoiSFM1MTIifQ.eyJpc3MiOiJ0aGFuaGJpbmgiLCJhdWQiOiJ0aGFuaGJpbmgiLCJzdWIiOiJhZG1pbkBnbWFpbC5jb20iLCJleHAiOjE3MDQwODc1OTh9.xkQc7oWW57wlTVK4Yi-2tJ5eVbeVG16nYs4vqGhaNqQCjgogJv6ZFeV0QdzKosMwOpxIQre70xiL1O17xIPWag",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"roomId\": 1,\r\n    \"guestUserName\": \"binh\", //Call to admin to book room\r\n    \"guestFirstName\": \"Binh\",\r\n    \"guestLastName\": \"Truong\",\r\n    \"note\": \"note\"\r\n    \"checkinTime\": \"2023-06-10 13:00\",\r\n    \"checkoutTime\": \"2023-06-11 12:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/booking",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"booking"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3. Create Booking - Handle missing field",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXBlIjoiand0IiwiYWxnIjoiSFM1MTIifQ.eyJpc3MiOiJ0aGFuaGJpbmgiLCJhdWQiOiJ0aGFuaGJpbmgiLCJzdWIiOiJhZG1pbkBnbWFpbC5jb20iLCJleHAiOjE3MDQwODc1OTh9.xkQc7oWW57wlTVK4Yi-2tJ5eVbeVG16nYs4vqGhaNqQCjgogJv6ZFeV0QdzKosMwOpxIQre70xiL1O17xIPWag",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "//lost guestUserName\r\n{\r\n    \"roomId\": 1, \r\n    \"guestFirstName\": \"Binh\",\r\n    \"guestLastName\": \"Truong\",\r\n    \"checkinTime\": \"2023-12-26 13:00\",\r\n    \"checkoutTime\": \"2023-12-27 12:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/booking",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"booking"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3. Create Booking - Handle room not found",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXBlIjoiand0IiwiYWxnIjoiSFM1MTIifQ.eyJpc3MiOiJ0aGFuaGJpbmgiLCJhdWQiOiJ0aGFuaGJpbmgiLCJzdWIiOiJhZG1pbkBnbWFpbC5jb20iLCJleHAiOjE3MDQwODc1OTh9.xkQc7oWW57wlTVK4Yi-2tJ5eVbeVG16nYs4vqGhaNqQCjgogJv6ZFeV0QdzKosMwOpxIQre70xiL1O17xIPWag",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "//room error\r\n{\r\n    \"roomId\": 100, \r\n    \"guestUserName\": \"binh\",\r\n    \"guestFirstName\": \"Binh\",\r\n    \"guestLastName\": \"Truong\",\r\n    \"checkinTime\": \"2023-12-26 13:00\",\r\n    \"checkoutTime\": \"2023-12-27 12:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/booking",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"booking"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "4. Create Booking with a booked Room",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXBlIjoiand0IiwiYWxnIjoiSFM1MTIifQ.eyJpc3MiOiJ0aGFuaGJpbmgiLCJhdWQiOiJ0aGFuaGJpbmgiLCJzdWIiOiJhZG1pbkBnbWFpbC5jb20iLCJleHAiOjE3MDQwNzk4Mjl9.JzPscLd5hjZky5PcVXpYiBVdspbI4MBdyXSygVR7RqG92Rjq0wFbpnLO30XSmBZDRRPOHRowd0XMuU1G2H6cCw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"roomId\": 1,\r\n    \"guestUserName\": \"binh\",\r\n    \"guestFirstName\": \"Binh\",\r\n    \"guestLastName\": \"Truong\",\r\n    \"checkinTime\": \"2023-06-10 13:00\",\r\n    \"checkoutTime\": \"2023-06-11 12:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/booking",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"booking"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "5. View Booking Details",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXBlIjoiand0IiwiYWxnIjoiSFM1MTIifQ.eyJpc3MiOiJ0aGFuaGJpbmgiLCJhdWQiOiJ0aGFuaGJpbmgiLCJzdWIiOiJhZG1pbkBnbWFpbC5jb20iLCJleHAiOjE3MDQwNzk4Mjl9.JzPscLd5hjZky5PcVXpYiBVdspbI4MBdyXSygVR7RqG92Rjq0wFbpnLO30XSmBZDRRPOHRowd0XMuU1G2H6cCw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/booking/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"booking",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "5. View Booking Details - Empty",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXBlIjoiand0IiwiYWxnIjoiSFM1MTIifQ.eyJpc3MiOiJ0aGFuaGJpbmgiLCJhdWQiOiJ0aGFuaGJpbmgiLCJzdWIiOiJhZG1pbkBnbWFpbC5jb20iLCJleHAiOjE3MDQwNzk4Mjl9.JzPscLd5hjZky5PcVXpYiBVdspbI4MBdyXSygVR7RqG92Rjq0wFbpnLO30XSmBZDRRPOHRowd0XMuU1G2H6cCw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/booking/100",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"booking",
+								"100"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "6. View Booking List",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXBlIjoiand0IiwiYWxnIjoiSFM1MTIifQ.eyJpc3MiOiJ0aGFuaGJpbmgiLCJhdWQiOiJ0aGFuaGJpbmgiLCJzdWIiOiJhZG1pbkBnbWFpbC5jb20iLCJleHAiOjE3MDQwODc1OTh9.xkQc7oWW57wlTVK4Yi-2tJ5eVbeVG16nYs4vqGhaNqQCjgogJv6ZFeV0QdzKosMwOpxIQre70xiL1O17xIPWag",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/booking",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"booking"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "7. Update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXBlIjoiand0IiwiYWxnIjoiSFM1MTIifQ.eyJpc3MiOiJ0aGFuaGJpbmgiLCJhdWQiOiJ0aGFuaGJpbmgiLCJzdWIiOiJhZG1pbkBnbWFpbC5jb20iLCJleHAiOjE3MDQwNzk4Mjl9.JzPscLd5hjZky5PcVXpYiBVdspbI4MBdyXSygVR7RqG92Rjq0wFbpnLO30XSmBZDRRPOHRowd0XMuU1G2H6cCw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"guestFirstName\": \"Binh2\",\r\n    \"guestLastName\": \"Thanh\", //Change Data\r\n    \"checkinTime\": \"2023-12-26 13:00\",\r\n    \"checkoutTime\": \"2023-12-27 12:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/booking",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"booking"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "8. Deactive",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXBlIjoiand0IiwiYWxnIjoiSFM1MTIifQ.eyJpc3MiOiJ0aGFuaGJpbmgiLCJhdWQiOiJ0aGFuaGJpbmgiLCJzdWIiOiJhZG1pbkBnbWFpbC5jb20iLCJleHAiOjE3MDQwODc1OTh9.xkQc7oWW57wlTVK4Yi-2tJ5eVbeVG16nYs4vqGhaNqQCjgogJv6ZFeV0QdzKosMwOpxIQre70xiL1O17xIPWag",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"bookingId\": 4,\r\n    \"guestFirstName\": \"Binh\",\r\n    \"guestLastName\": \"Thanh\", //Change Data\r\n    \"checkinTime\": \"2023-12-22 12:00\",\r\n    \"checkoutTime\": \"2023-12-23 12:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/booking/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"booking",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
